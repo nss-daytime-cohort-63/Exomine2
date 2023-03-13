@@ -1,5 +1,5 @@
-//import { Governors } from "./Governors.js"
-//import { Mines } from "./mine.js"
+import { Governors } from "./Governors.js"
+import { Mines } from "./mine.js"
 
 //import { addCustomOrder } from "./database.js"
 
@@ -23,10 +23,12 @@ export const Exomine = () => {
             <article class="choices">
                 <section class="governors">
                 <h3>Choose a governor</h3>
+                ${Governors()}
                 </section>
-
+    
                 <section class="facilities">
                 <h3>Choose a facility</h3>
+                ${Mines()}
                 </section>
             </article>
                 
