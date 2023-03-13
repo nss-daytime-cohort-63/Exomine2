@@ -1,3 +1,7 @@
+import { getMines } from "./database.js"
+
+const mines = getMines()
+
 export const Mines =() =>{
     let html=""
     
