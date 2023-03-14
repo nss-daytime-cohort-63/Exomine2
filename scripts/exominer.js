@@ -1,5 +1,6 @@
 import { Governors } from "./Governors.js"
 import { Mines } from "./mine.js"
+import { buildColonyOptions } from "./colonies.js"
 
 //import { addCustomOrder } from "./database.js"
 
@@ -33,8 +34,8 @@ export const Exomine = () => {
             </article>
                 
             <article>
-                <section class="colonies">
-            
+                <section class="colonies" id = "ColonyOptions">
+                Colony Display
                 </section>
             </article>
         </div>
