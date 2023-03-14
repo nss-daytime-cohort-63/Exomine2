@@ -1,27 +1,32 @@
-import { getMines, getMinerals, getAvailableMinerals } from "./database.js"
+import { getMines, getMinerals, getAvailableMinerals, getSelectedMine, setSelectedMine } from "./database.js"
 
-const mines = getMines()
-
-let selectedMine = null
 
 document.addEventListener(
        "change",
        (changeEvent) => {
+              const mines = getMines()
               if (changeEvent.target.id === "mines") {
                      const selectedMineId = parseInt(changeEvent.target.value)
                      for (const mine of mines) {
                             if (mine.id === selectedMineId) {
-                                   selectedMine = mine
+                                   setSelectedMine(mine)
                             }
+                     }
+                     if (selectedMineId === 0) {
+                            document.querySelector("#MineralOptions").innerHTML = " "  
+                     }
+                     else {
+                            document.querySelector("#MineralOptions").innerHTML = buildMineralOptions()
                      }
               }
        }
 )
 
-const findMatchingMineMinerals = (selectedMine) => {
-       let selectedMineMinerals = []
+const findMatchingMineMinerals = () => {
+       const selectedMine = getSelectedMine()
        const mineMinerals = getAvailableMinerals()
 
+       let selectedMineMinerals = []
        for (const mineMineral of mineMinerals) {
               if (mineMineral.mineId === selectedMine.id) {
                      selectedMineMinerals.push(mineMineral)
@@ -31,6 +36,7 @@ const findMatchingMineMinerals = (selectedMine) => {
 }
 
 export const Mines = () => {
+       const mines = getMines()
        let html = ""
 
        html += `<select name="mines" id="mines">`
@@ -50,14 +56,14 @@ export const Mines = () => {
        return html
 }
 
-const selectedMineMinerals = findMatchingMineMinerals(selectedMine)
 
 //invoke buildMineralOptions in exominer.js
 export const buildMineralOptions = () => {
-       let html = "<ul>"
 
+       const selectedMineMinerals = findMatchingMineMinerals()
        const minerals = getMinerals()
 
+       let html = "<ul>"
        const listItems = minerals.map(mineral => {
               for (const selectedMineMineral of selectedMineMinerals) {
                      if (mineral.id === selectedMineMineral.mineralId) {
@@ -72,3 +78,27 @@ export const buildMineralOptions = () => {
 
        return html
 }
+
+/* changes to other modules
+
+needs to be in main.js (john should have added)
+document.addEventListener( "stateChanged", event => {
+    console.log("State has changed")
+    renderAllHTML()
+})
+
+needs to be added to exominer.js
+<div id="MineralOptions">
+        </div>
+
+add to database.js
+export const setSelectedMine = (mine) => {
+    database.transientState.selectedMine = mine
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+export const getSelectedMine = () => {
+    return database.transientState.selectedMine
+}
+
+*/
