@@ -1,4 +1,4 @@
-import { getMinerals, getMineMinerals, getMines, setSelectedMineral } from "./database.js"
+import { getMinerals,  getMines, setSelectedMineral } from "./database.js"
 
 //put mineral in the transient state
 // MOVE TO MAIN.JS

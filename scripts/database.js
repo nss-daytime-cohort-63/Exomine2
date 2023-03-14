@@ -127,3 +127,6 @@ export const getSelectedGovernor = () => {
 
 }
 
+export const setSelectedMineral = (mineral) => {
+        database.transientState.selectedMineral = mineral
+       document.dispatchEvent(new CustomEvent("stateChanged")) }
