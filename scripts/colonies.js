@@ -1,4 +1,4 @@
-import { getColonies, getGovernors, setSelectedGovernor, getSelectedGovernor} from "./database.js"
+import { getColonies, getSelectedGovernor} from "./database.js"
 
 
 

@@ -33,3 +33,7 @@ renderAllHTML()
 
 
 
+document.addEventListener( "stateChanged", event => {
+    console.log("State has changed")
+    renderAllHTML()
+})
