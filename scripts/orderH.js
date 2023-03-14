@@ -10,7 +10,7 @@ export const orderHistory =()=>{
 for (const mineral of minerals){
     for(const boughtMineral of boughtMinerals){
         if(mineral.id === boughtMineral.mineralId){
-            let html =`<li>${mineral.mineralAmount} ${mineral.name}</li>`
+            let html =`<li>${boughtMineral.mineralAmount} ${mineral.name}</li>`
             return html
         }
     }
