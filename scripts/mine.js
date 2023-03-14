@@ -79,26 +79,3 @@ export const buildMineralOptions = () => {
        return html
 }
 
-/* changes to other modules
-
-needs to be in main.js (john should have added)
-document.addEventListener( "stateChanged", event => {
-    console.log("State has changed")
-    renderAllHTML()
-})
-
-needs to be added to exominer.js
-<div id="MineralOptions">
-        </div>
-
-add to database.js
-export const setSelectedMine = (mine) => {
-    database.transientState.selectedMine = mine
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
-
-export const getSelectedMine = () => {
-    return database.transientState.selectedMine
-}
-
-*/

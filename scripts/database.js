@@ -108,4 +108,25 @@ export const purchaseMineral = () => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
+export const getSelectedMine = () => {
+    return database.transientState.selectedMine
+}
 
+export const setSelectedGovernor = (gov) => {
+    return database.transientState.selectedGov = gov
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+export const setSelectedMine = (mine) => {
+    database.transientState.selectedMine = mine
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+export const getSelectedGovernor = () => {
+       return database.transientState.selectedGov
+
+}
+
+export const setSelectedMineral = (mineral) => {
+        database.transientState.selectedMineral = mineral
+       document.dispatchEvent(new CustomEvent("stateChanged")) }
