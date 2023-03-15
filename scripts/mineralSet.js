@@ -1,4 +1,4 @@
-import { getMinerals,  getMines, setSelectedMineral } from "./database.js"
+import { getMinerals,  getSelectedMineral, setSelectedMineral, getSelectedMine } from "./database.js"
 
 //put mineral in the transient state
 // MOVE TO MAIN.JS
@@ -24,29 +24,17 @@ document.addEventListener(
 
 
 //find the selectedMine and store it in a variable (pretty sure this is no longer necessary with most recent change)
-// let selectedMine = null
-// document.addEventListener(
-//     "change",
-//     (changeEvent) => {
-//         if (changeEvent.target.id === "mines") {
-//             const changeMineId = parseInt(changeEvent.target.value)
-//             let mines = getMines()
-//             for (let mine of mines) {
-//                 if (mine.id === changeMineId) {
-//                     selectedMine = mine
-//                 }
-//             }
-//         }
-//     }
-// )
+
 //display 1 of selected mineral in the cart when it is selected
 //called in exominer
 export const cartMineral = () => {
-    let minerals = getMinerals()
-
-    for (let mineral of minerals)
-        if (database.transientState.selectedMineral.id === mineral.id) {
-            let html = `<div>One ton of ${mineral.name} from ${selectedMine.name}</>`
+    let selectedMineral = getSelectedMineral()
+    let selectedMine = getSelectedMine()
+    let html = ''
+        if (selectedMineral.name === null) {
+            return html
+        } else {
+            html = `<div>One ton of ${selectedMineral.name} from ${selectedMine.name}</>`
             return html
     }
 }
