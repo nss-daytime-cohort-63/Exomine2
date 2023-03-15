@@ -12,16 +12,10 @@ document.addEventListener(
                          if (gov.id === selectedGovId) {
                                 setSelectedGovernor(gov)
                          }
-                  }
-                  if (selectedGovId === 0) {
-                          
-                  }
-                  else {
-                         document.querySelector("#ColonyOptions").innerHTML = buildColonyOptions()
-                  }
-           }
+                
+                        }
     }
-)
+})
 
 const mainContainer = document.querySelector("#container")
 
