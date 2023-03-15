@@ -1,5 +1,7 @@
 const database = {
-    transientState: {},
+    transientState: {
+        selectedGov:{id: null, name: null, colonyId:null, active: null}
+    },
     governors: [
         { id: 1, name: "John Smith", colonyId: 1, active: true },
         { id: 2, name: "Jane Doe", colonyId: 2, active: true },
@@ -113,7 +115,7 @@ export const getSelectedMine = () => {
 }
 
 export const setSelectedGovernor = (gov) => {
-    return database.transientState.selectedGov = gov
+    database.transientState.selectedGov = gov
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
@@ -121,6 +123,8 @@ export const setSelectedMine = (mine) => {
     database.transientState.selectedMine = mine
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
+
+
 
 export const getSelectedGovernor = () => {
        return database.transientState.selectedGov
