@@ -33,7 +33,7 @@ export const Mines = () => {
        const mines = getMines()
        let html = ""
 
-       html += `<select name="mines" id="mines">`
+       html += `<select name="mines" id="mines" class="mineName">`
 
        html += `<option value="0">Select a Mine Facility</option>`
 

@@ -1,0 +1,149 @@
+.headerContainer{
+    display:flex;
+    justify-content: center;
+    height:100px;
+    margin-bottom: 20px;
+}
+
+.header {
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.mainContainer {
+    display:flex;
+    justify-content: space-between;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+
+.governors {
+    margin-top: 50px;
+    display:flex;
+    justify-content: flex-start;
+    width:500px;
+    height:100px;
+ 
+}
+
+
+
+.facilities {
+    display:flex;
+    justify-content: flex-start;
+    width:500px;
+    height:100px;
+  
+}
+
+.colonies{
+  
+    display:flex;
+    justify-content: center;
+    margin-top: 50px;
+    width:200px;
+    height:200px;
+    border: dotted;
+    border-color: black;
+}
+
+.colonyName{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+
+}
+
+.titles{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    height:40px;
+    padding-top:15px;
+    font-weight: 500;
+
+}
+
+.govName{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    height:40px;
+    margin-top:20px;
+    margin-left: 5px;
+    font-weight: 500;
+
+
+}
+
+.mineName{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    height:40px;
+    margin-top:20px;
+    margin-left: 5px;
+    font-weight: 500;
+    
+}
+
+.bottomContainer {
+    display:flex;
+    justify-content: space-between;
+}
+
+.customOrders{
+    display:flex;
+    justify-content: center;
+    margin-left: 7%;
+    width:60%;
+    border: dotted;
+    border-color: black;
+    margin-top: 50px;
+    padding-bottom: 100px;
+    padding-top: 10px;
+    height:100px;
+}
+
+.facilityTitle{
+    display:flex;
+    justify-content: center;
+    border: dotted;
+    border-color: black;
+ 
+}
+
+
+.mineralDisplay{
+    padding-right: 50px;
+
+ 
+}
+
+.titleAndMins {
+    border: dotted;
+    border-color: black;
+}
+
+.spaceCartContainer {
+    display:flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-right: 7%;
+    width:200px;
+    border: dotted;
+    border-color: black;
+}
+
+.spaceCart {
+    margin: auto;
+    padding-bottom: 30px;
+}
+
+.spaceCartTitle {
+        display:flex;
+        justify-content: center;
+        border: dotted;
+        border-color: black;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: larger;
+     
+    }
+

@@ -20,40 +20,63 @@ import { buildColonyOptions } from "./colonies.js"
 
 export const Exomine = () => {
     return `
-        <h1>Solar System Mining Markertplace</h1>
+        <div class='headerContainer'>
+        <h1 class='header'>Solar System Mining Markertplace</h1>
+        </div>
 
-        <div>
+        <div class='mainContainer'>
             <article class="choices">
                 <section class="governors">
-                <h3>Choose a governor</h3>
+                <h3 class="titles">Choose a governor</h3>
                 ${Governors()}
                 </section>
     
                 <section class="facilities">
-                <h3>Choose a facility</h3>
+                <h3 class="titles">Choose a facility</h3>
                 ${Mines()}
                 </section>
             </article>
                 
-            <article>
+            <article class='colonyContainer'>
                 <section class="colonies">
                 ${buildColonyOptions()}
                 </section>
             </article>
         </div>
         
-        <div>
-        ${buildMineralOptions()}
-       </div>
-        <div>
+   
+        <div class='bottomContainer'>
+
             <article class="customOrders">
-            
+                <div class='titleAndMins'>
+
+                    <div class="facilityTitle">
+                    Facility Minerals
+                    </div>
+
+                    <div class="mineralDisplay">
+                    ${buildMineralOptions()}
+                    </div>
+
+               </div>
             </article>
 
-            <article>
-                <h2>Space cart</h2>
-                ${cartMineral()}
-                <button id="orderButton">Purchase Mineral</button>
+            <article class='spaceCartContainer'>
+                  <div class='spaceCart'>
+
+                    <h2 class='spaceCartTitle'>
+                    Space Cart
+                    </h2>
+
+                    <div class="cartDisplay"
+                    ${cartMineral()}
+                    </div>
+
+                    <button id="orderButton">
+                    Purchase Mineral
+                    </button>
+
+                 </div>
             </article>
 
         </div> 

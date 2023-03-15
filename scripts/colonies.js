@@ -8,10 +8,10 @@ export const buildColonyOptions = () => {
 
         for( const colony of colonies){
             if(selectedGov.colonyId===colony.id) {
-              return`${colony.name} Display`
+              return`<h2 class='colonyName'>${colony.name} Display</h2>`
             }
         
         }
-        return 'Colony Display'
+        return `<h2 class='colonyName'>Colony Display</h2>`
 }
 

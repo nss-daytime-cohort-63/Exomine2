@@ -4,7 +4,7 @@ import { getGovernors } from "./database.js"
 //export to exominer.js for html setup
 export const Governors = () => {
     const governors = getGovernors()
-    let html = `<select id="resource">`
+    let html = `<select id="resource" class="govName">`
     html += `<option value="0">Select Governor</option>`
     let governorsList = governors.map((governor) => {
         if (governor.active === true) {
