@@ -52,7 +52,7 @@ export const Exomine = () => {
 
             <article>
                 <h2>Space cart</h2>
-                
+                ${cartMineral()}
                 <button id="orderButton">Purchase Mineral</button>
             </article>
 

@@ -1,7 +1,8 @@
 const database = {
     transientState: {
         selectedGov:{id: null, name: null, colonyId:null, active: null},
-        selectedMine: {id: null, name: null, active: null}
+        selectedMine: {id: null, name: null, active: null},
+        selectedMineral: {id: null, name: null}
     },
     governors: [
         { id: 1, name: "John Smith", colonyId: 1, active: true },
@@ -126,22 +127,10 @@ export const getSelectedGovernor = () => {
 }
 
 export const setSelectedMineral = (mineral) => {
-    database.transientState.selectedMineral = mineral
-    document.dispatchEvent(new CustomEvent("stateChanged")) }
+        database.transientState.selectedMineral = mineral
+       document.dispatchEvent(new CustomEvent("stateChanged")) }
 
 
-    //function to permanently change state (FINISH LATER)
-    export const purchaseMineral = () => {
-        //copy current state of chosen mineral
-
-        //check if colonyMinerals already has same mineralId
-        //if so, add one to said mineral
-        //if not, add new entry with new ID
-
-        
-
-
-        // Broadcast custom event to entire documement so that the
-        // application can re-render and update state
-        document.dispatchEvent(new CustomEvent("stateChanged"))
-    }
+export const getSelectedMineral = () => {
+    return database.transientState.selectedMineral
+}
