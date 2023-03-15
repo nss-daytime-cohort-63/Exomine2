@@ -1,7 +1,8 @@
 const database = {
     transientState: {
         selectedGov:{id: null, name: null, colonyId:null, active: null},
-        selectedMine: {id: null, name: null, active: null}
+        selectedMine: {id: null, name: null, active: null},
+        selectedMineral: {id: null, name: null}
     },
     governors: [
         { id: 1, name: "John Smith", colonyId: 1, active: true },
@@ -135,3 +136,8 @@ export const getSelectedGovernor = () => {
 export const setSelectedMineral = (mineral) => {
         database.transientState.selectedMineral = mineral
        document.dispatchEvent(new CustomEvent("stateChanged")) }
+
+
+export const getSelectedMineral = () => {
+    return database.transientState.selectedMineral
+}
