@@ -1,8 +1,8 @@
 const database = {
     transientState: {
-        selectedGov:{id: null, name: null, colonyId:null, active: null},
-        selectedMine: {id: null, name: null, active: null},
-        selectedMineral: {id: null, name: null}
+        selectedGov: { id: null, name: null, colonyId: null, active: null },
+        selectedMine: { id: null, name: null, active: null },
+        selectedMineral: { id: null, name: null }
     },
     governors: [
         { id: 1, name: "John Smith", colonyId: 1, active: true },
@@ -46,7 +46,7 @@ const database = {
         { id: 3, name: "sulfur" }
     ],
     colonyMinerals: [
-        { id: 1, colonyId: 1, mineralId: 1, mineralAmount: 2}
+        { id: 1, colonyId: 1, mineralId: 1, mineralAmount: 2 }
     ]
 }
 
@@ -64,14 +64,19 @@ export const setMineral = (mineralId) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-//if problems, look at this setter
-export const setMineralAmount = (minAmount) => {
-    if (database.transientState.mineralAmount = null) {
-        database.transientState.mineralAmount = minAmount
-    }
-    else {
-        database.transientState.mineralAmount += minAmount
-    }
+
+export const setSelectedGovernor = (gov) => {
+    database.transientState.selectedGov = gov
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+export const setSelectedMine = (mine) => {
+    database.transientState.selectedMine = mine
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+export const setSelectedMineral = (mineral) => {
+    database.transientState.selectedMineral = mineral
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
@@ -104,33 +109,36 @@ export const getBoughtMinerals = () => {
     return database.colonyMinerals.map(mineral => ({ ...mineral }))
 }
 
-
 export const getSelectedMine = () => {
     return database.transientState.selectedMine
 }
 
-export const setSelectedGovernor = (gov) => {
-    database.transientState.selectedGov = gov
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
-
-export const setSelectedMine = (mine) => {
-    database.transientState.selectedMine = mine
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
-
-
-
 export const getSelectedGovernor = () => {
     return database.transientState.selectedGov
-    
+
 }
-
-export const setSelectedMineral = (mineral) => {
-        database.transientState.selectedMineral = mineral
-       document.dispatchEvent(new CustomEvent("stateChanged")) }
-
-
 export const getSelectedMineral = () => {
     return database.transientState.selectedMineral
+}
+
+
+
+//function to permanently change state (FINISH LATER)
+export const purchaseMineral = () => {
+    //copy current state of chosen mineral
+
+
+    //check if colonyMinerals already has same mineralId
+    //if so, add one to said mineral
+    //if not, add new entry with new ID
+
+
+
+    //reset portions of temporary state
+
+
+    
+    // Broadcast custom event to entire documement so that the
+    // application can re-render and update state
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
