@@ -1,5 +1,5 @@
 import { Governors } from "./Governors.js"
-import { Mines } from "./mine.js"
+import { buildMineralOptions, Mines } from "./mine.js"
 import { cartMineral } from "./mineralSet.js"
 import { buildColonyOptions } from "./colonies.js"
 
@@ -42,7 +42,8 @@ export const Exomine = () => {
             </article>
         </div>
         
-        <div id="MineralOptions">
+        <div>
+        ${buildMineralOptions()}
        </div>
         <div>
             <article class="customOrders">

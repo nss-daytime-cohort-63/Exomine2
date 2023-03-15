@@ -1,6 +1,7 @@
 const database = {
     transientState: {
-        selectedGov:{id: null, name: null, colonyId:null, active: null}
+        selectedGov:{id: null, name: null, colonyId:null, active: null},
+        selectedMine: {id: null, name: null, active: null}
     },
     governors: [
         { id: 1, name: "John Smith", colonyId: 1, active: true },
