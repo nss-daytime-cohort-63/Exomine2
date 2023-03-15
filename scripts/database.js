@@ -103,13 +103,6 @@ export const getBoughtMinerals = () => {
     return database.colonyMinerals.map(mineral => ({ ...mineral }))
 }
 
-//function to permanently change state (FINISH LATER)
-export const purchaseMineral = () => {
-
-    // Broadcast custom event to entire documement so that the
-    // application can re-render and update state
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
 
 export const getSelectedMine = () => {
     return database.transientState.selectedMine
@@ -128,10 +121,27 @@ export const setSelectedMine = (mine) => {
 
 
 export const getSelectedGovernor = () => {
-       return database.transientState.selectedGov
-
+    return database.transientState.selectedGov
+    
 }
 
 export const setSelectedMineral = (mineral) => {
-        database.transientState.selectedMineral = mineral
-       document.dispatchEvent(new CustomEvent("stateChanged")) }
+    database.transientState.selectedMineral = mineral
+    document.dispatchEvent(new CustomEvent("stateChanged")) }
+
+
+    //function to permanently change state (FINISH LATER)
+    export const purchaseMineral = () => {
+        //copy current state of chosen mineral
+
+        //check if colonyMinerals already has same mineralId
+        //if so, add one to said mineral
+        //if not, add new entry with new ID
+
+        
+
+
+        // Broadcast custom event to entire documement so that the
+        // application can re-render and update state
+        document.dispatchEvent(new CustomEvent("stateChanged"))
+    }
