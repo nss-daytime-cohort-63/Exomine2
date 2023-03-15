@@ -12,12 +12,6 @@ document.addEventListener(
                                    setSelectedMine(mine)
                             }
                      }
-                     if (selectedMineId === 0) {
-                            document.querySelector("#MineralOptions").innerHTML = " "  
-                     }
-                     else {
-                            document.querySelector("#MineralOptions").innerHTML = buildMineralOptions()
-                     }
               }
        }
 )
@@ -62,6 +56,7 @@ export const buildMineralOptions = () => {
 
        const selectedMineMinerals = findMatchingMineMinerals()
        const minerals = getMinerals()
+       const selectedMine = getSelectedMine()
 
        let html = "<ul>"
        const listItems = minerals.map(mineral => {
@@ -76,6 +71,12 @@ export const buildMineralOptions = () => {
        html += listItems.join("")
        html += "</ul>"
 
-       return html
+       if (selectedMine.id !== null){
+              return html
+       }
+       else {
+              return " "
+       }
+
 }
 
