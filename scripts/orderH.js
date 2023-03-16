@@ -1,7 +1,7 @@
 import { getMinerals } from "./database.js"
 import { getBoughtMinerals } from "./database.js"
 import { getColonies } from "./database.js"
-import { getSelectedGovernor, getSelectedMineral, setColony, setMineral } from "./database.js"
+import { getSelectedGovernor, getSelectedMineral, setColony, setMineral, setSelectedMineral } from "./database.js"
 import { purchaseMineral } from "./database.js"
 
 
@@ -57,9 +57,11 @@ document.addEventListener(
         if (itemClicked.target.id === "orderButton") {
             const selectedGov = getSelectedGovernor()
             const selectedMin = getSelectedMineral()
+            const nullMin = {id: null, name: null}
             setColony(selectedGov.colonyId)
             setMineral(selectedMin)
             purchaseMineral()
+            setSelectedMineral(nullMin)
 // push transient state minerals into colony array
         }
     }
