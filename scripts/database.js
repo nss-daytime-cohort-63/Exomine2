@@ -1,8 +1,9 @@
 const database = {
     transientState: {
-        selectedGov:{id: null, name: null, colonyId:null, active: null},
-        selectedMine: {id: null, name: null, active: null},
-        selectedMineral: {id: null, name: null}
+        selectedGov: { id: null, name: null, colonyId: null, active: null },
+        selectedMine: { id: null, name: null, active: null },
+        selectedMineral: { id: null, name: null },
+        colonyMineralBuilder: {}
     },
     governors: [
         { id: 1, name: "John Smith", colonyId: 1, active: true },
@@ -46,36 +47,49 @@ const database = {
         { id: 3, name: "sulfur" }
     ],
     colonyMinerals: [
-        { id: 1, colonyId: 1, mineralId: 1, mineralAmount: 2}
+        { id: 1, colonyId: 1, mineralId: 1, mineralAmount: 2 }
     ]
 }
 
 //setters to temporarily change state
-// basically stores part of order in order builder (transientState)
 
+// basically stores part of order in order builder (transientState)
 //definitely need a colonyId, mineralId, and mineralAmount (just 1 for each click) stored in colonyMinerals
 export const setColony = (colonyId) => {
-    database.transientState.selectedColony = colonyId
+    database.transientState.colonyMineralBuilder.colonyId = colonyId
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-export const setMineral = (mineralId) => {
-    database.transientState.selectedMineral = mineralId
+export const setMineral = (mineral) => {
+    database.transientState.colonyMineralBuilder.mineralId = mineral.id
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-//if problems, look at this setter
-export const setMineralAmount = (minAmount) => {
-    if (database.transientState.mineralAmount = null) {
-        database.transientState.mineralAmount = minAmount
-    }
-    else {
-        database.transientState.mineralAmount += minAmount
-    }
+export const setSelectedGovernor = (gov) => {
+    database.transientState.selectedGov = gov
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
+
+export const setSelectedMine = (mine) => {
+    database.transientState.selectedMine = mine
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+export const setSelectedMineral = (mineral) => {
+    database.transientState.selectedMineral = mineral
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
 
 //getters to retrieve copy of state
+
+export const getColony = () => {
+    return database.transientState.colonyMineralBuilder.colonyId
+}
+export const getMineral = () => {
+    return database.transientState.colonyMineralBuilder.mineralId
+}
+
 export const getFacilities = () => {
     return database.facilities.map(f => ({ ...f }))
 }
@@ -104,40 +118,86 @@ export const getBoughtMinerals = () => {
     return database.colonyMinerals.map(mineral => ({ ...mineral }))
 }
 
-//function to permanently change state (FINISH LATER)
-export const purchaseMineral = () => {
-
-    // Broadcast custom event to entire documement so that the
-    // application can re-render and update state
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
-
 export const getSelectedMine = () => {
     return database.transientState.selectedMine
 }
 
-export const setSelectedGovernor = (gov) => {
-    database.transientState.selectedGov = gov
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
-
-export const setSelectedMine = (mine) => {
-    database.transientState.selectedMine = mine
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
-
-
-
 export const getSelectedGovernor = () => {
-       return database.transientState.selectedGov
+    return database.transientState.selectedGov
 
 }
-
-export const setSelectedMineral = (mineral) => {
-        database.transientState.selectedMineral = mineral
-       document.dispatchEvent(new CustomEvent("stateChanged")) }
-
-
 export const getSelectedMineral = () => {
     return database.transientState.selectedMineral
 }
+
+
+
+//function to permanently change state (FINISH LATER)
+export const purchaseMineral = () => {
+    const selectedMineralId = getMineral()
+    const selectedColonyId = getColony()
+    //check if colonyMineralBuilder.mineralId and colonyMineralBuilder.colonyId are not null
+    if (selectedMineralId !== null && selectedColonyId !== null) {
+
+        //copy current state
+        const partialOrder = { ...database.transientState.colonyMineralBuilder }
+
+
+        createFinalOrder(partialOrder)
+        subtractMineMineral(partialOrder)
+
+        //reset portions of temporary state
+        database.transientState.colonyMineralBuilder = {}
+
+
+        // Broadcast custom event to entire documement so that the
+        // application can re-render and update state
+        document.dispatchEvent(new CustomEvent("stateChanged"))
+    }
+
+}
+
+//function that is invoked in purchaseMineral
+//(separate function that intakes a mineral and a governor)
+//check if any colonyMineral entries already has same mineralId and colonyId
+//(Will have to loop through colonyMinerals and compare mineralIds and colonyIds)
+//if match, add one to colonyMinerals mineralAmount (colonyMineral.mineralAmount += 1)
+//if not, add new entry (const lastIndex = database.colonyMinerals.length -1
+//                       newOrder.id = database.colonyMinerals[lastIndex].id +1)
+//(id of one more than last (X), colonyId based on selected governors colonyId (X), minerals Id (X), and mineral amount of 1)
+//                       partialOrder.mineralAmount = 1
+const createFinalOrder = (partialOrder) => {
+    const previousOrders = database.colonyMinerals
+    for (const previousOrder of previousOrders) {
+        //if a colonyMineral for this mineral already exists
+        if (previousOrder.mineralId === partialOrder.mineralId && previousOrder.colonyId === partialOrder.colonyId) {
+            previousOrder.mineralAmount += 1
+            return
+        }
+        
+    }
+    
+                //create new ColonyMineral
+                const lastIndex = database.colonyMinerals.length - 1
+                partialOrder.id = database.colonyMinerals[lastIndex].id + 1
+                partialOrder.mineralAmount = 1
+                database.colonyMinerals.push(partialOrder)
+                return
+}
+
+const subtractMineMineral = (partialOrder) => {
+    const availableMinerals = getAvailableMinerals()
+    const selectedMine = getSelectedMine()
+    for (const mineral of availableMinerals) {
+        if (mineral.mineralId === partialOrder.mineralId && mineral.mineId === selectedMine.id) {
+            database.mineMinerals[mineral.id - 1].mineralAmount -= 1
+        }
+    }
+}
+
+
+
+//in purchase click event,
+//need to getSelectedGov and getSelectedMineral
+//setColony(takes govs colonyId) and setMineral (takes selectedMineral) need to run
+//THEN purchaseMineral can run

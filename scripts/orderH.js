@@ -54,7 +54,7 @@ document.addEventListener(
     "click",
     (clickEvent) => {
         const itemClicked = clickEvent
-        if (itemClicked.id === "orderButton") {
+        if (itemClicked.target.id === "orderButton") {
             const selectedGov = getSelectedGovernor()
             const selectedMin = getSelectedMineral()
             setColony(selectedGov.colonyId)
