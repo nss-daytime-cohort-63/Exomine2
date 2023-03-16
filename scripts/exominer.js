@@ -25,6 +25,10 @@ export const Exomine = () => {
         <h1 class='header'>Solar System Mining Markertplace</h1>
         </div>
 
+        <div class="imgContainer">
+        <img src="../images/space.jpg" class='img'>
+        </div>
+
         <div class='mainContainer'>
             <article class="choices">
                 <section class="governors">
@@ -40,8 +44,12 @@ export const Exomine = () => {
                 
             <article class='colonyContainer'>
                 <section class="colonies">
+                <section class="colonytitle">
                 ${buildColonyOptions()}
+                </section>
+                <section class='orders'>
                 ${orderHistory()}
+                </section>
                 </section>
             </article>
         </div>
@@ -59,31 +67,31 @@ export const Exomine = () => {
                     <div class="mineralDisplay">
                     ${buildMineralOptions()}
                     </div>
-
-               </div>
-            </article>
-
-            <article class='spaceCartContainer'>
-                  <div class='spaceCart'>
-
+                    
+                    </div>
+                    </article>
+                    
+                    <article class='spaceCartContainer'>
+                    <div class='spaceCart'>
+                    
                     <h2 class='spaceCartTitle'>
                     Space Cart
                     </h2>
-
-                 <div class='cartDisplay'>
-
+                    
+                    <div class='cartDisplay'>
+                    
                     <div class="cart">
                     ${cartMineral()}
                     </div>
-
+                    
                     <button id="orderButton">
                     Purchase Mineral
                     </button>
-
-                </div>
-
-                 </div>
-            </article>
+                    
+                    </div>
+                    
+                    </div>
+                    </article>
 
         </div> 
     `

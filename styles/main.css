@@ -3,7 +3,31 @@
     justify-content: center;
     height:100px;
     margin-bottom: 20px;
+    background-color:rgb(100, 115, 177);
 }
+
+.imgContainer{
+    display:flex;
+    justify-content: center;
+    height:250px;
+   
+}
+
+.img{
+    height: 100%;
+    width:87%
+
+}
+.mineral{
+    list-style-type: none;
+}
+
+
+.background {
+ background-color:rgb(8,8,8);
+}
+
+
 
 .header {
     font-family: 'Courier New', Courier, monospace;
@@ -39,18 +63,34 @@
 
 .colonies{
   
-    display:flex;
-    justify-content: center;
+
     margin-top: 50px;
     width:200px;
     height:200px;
     border: dotted;
     border-color: black;
+    background-color: rgb(116,131,194);
 }
+
+
+
+.colonytitle {
+display: flex;
+justify-content: center;
+}
+
+.orders {
+    display: flex;
+    justify-content: center;
+    }
+    
+
+
 
 .colonyName{
     font-family: 'Courier New', Courier, monospace;
     font-size: larger;
+  
 
 }
 
@@ -60,6 +100,7 @@
     height:40px;
     padding-top:15px;
     font-weight: 500;
+    color: white;
 
 }
 
@@ -70,6 +111,8 @@
     margin-top:20px;
     margin-left: 5px;
     font-weight: 500;
+    background-color: rgb(116,131,194);
+  
 
 
 }
@@ -81,6 +124,8 @@
     margin-top:20px;
     margin-left: 5px;
     font-weight: 500;
+    background-color: rgb(116,131,194);
+    
     
 }
 
@@ -100,35 +145,50 @@
     padding-bottom: 100px;
     padding-top: 10px;
     height:100px;
+    background-color: rgb(116,131,194);
+
 }
 
 .facilityTitle{
     display:flex;
     justify-content: center;
-    border: dotted;
-    border-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    font-weight: 600;
+  
  
 }
 
 
 .mineralDisplay{
     padding-right: 50px;
+    margin-top: 10px;
 
  
 }
 
 .cartDisplay{
-   padding-top: 50px;
-   padding-left: 40px;
+    display: flex;
+    justify-content:space-between;
+    flex-direction: column;
+    padding-left: 40px;
+    
 
  
+}
+
+#orderButton {
+    width:80px;
+    height:40px;
+    margin-top:10px ;
+    margin-left: 20px;
+
 }
 
 
 
 .spaceCart {
-    border: dotted;
-    border-color: black;
+
     margin: auto;
     padding-bottom: 30px;
     width:200px;
@@ -136,17 +196,20 @@
 }
 
 .cart {
-    margin-bottom: 50px;
-    border: dotted;
-    border-color: black;
+
+    width:150px;
+    height:50px;
+    margin-top: 10px;
+
 
 }
 
-
-.titleAndMins {
-    border: dotted;
-    border-color: black;
+.minDiv{
+    margin: 0%;
 }
+
+
+
 
 .spaceCartContainer {
     display:flex;
@@ -156,13 +219,13 @@
     width:200px;
     border: dotted;
     border-color: black;
+    background-color: rgb(116,131,194);
 }
 
 .spaceCartTitle {
         display:flex;
         justify-content: center;
-        border: dotted;
-        border-color: black;
+    
         font-family: 'Courier New', Courier, monospace;
         font-size: larger;
         margin-top: auto;

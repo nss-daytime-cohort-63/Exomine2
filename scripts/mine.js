@@ -39,7 +39,7 @@ export const Mines = () => {
 
        const arrayMines = mines.map((mine) => {
               if (mine.active === true) {
-                     return `<option value="${mine.id}" name ="mine">${mine.name}</option>`
+                     return `<option value="${mine.id}" class='mine'>${mine.name}</option>`
               }
        }
        )
@@ -58,7 +58,7 @@ export const buildMineralOptions = () => {
        const minerals = getMinerals()
        const selectedMine = getSelectedMine()
 
-       let html = "<ul>"
+       let html = "<ul class='mineral'>"
        const listItems = minerals.map(mineral => {
               for (const selectedMineMineral of selectedMineMinerals) {
                      if (mineral.id === selectedMineMineral.mineralId) {
