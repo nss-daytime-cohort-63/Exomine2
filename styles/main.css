@@ -1,0 +1,235 @@
+.headerContainer{
+    display:flex;
+    justify-content: center;
+    height:100px;
+    margin-bottom: 20px;
+    background-color:rgb(100, 115, 177);
+}
+
+.imgContainer{
+    display:flex;
+    justify-content: center;
+    height:250px;
+   
+}
+
+.img{
+    height: 100%;
+    width:87%
+
+}
+.mineral{
+    list-style-type: none;
+}
+
+
+.background {
+ background-color:rgb(8,8,8);
+}
+
+
+
+.header {
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.mainContainer {
+    display:flex;
+    justify-content: space-between;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+
+.governors {
+    margin-top: 50px;
+    display:flex;
+    justify-content: flex-start;
+    width:500px;
+    height:100px;
+ 
+}
+
+
+
+.facilities {
+    display:flex;
+    justify-content: flex-start;
+    width:500px;
+    height:100px;
+  
+}
+
+.colonies{
+  
+
+    margin-top: 50px;
+    width:200px;
+    height:200px;
+    border: dotted;
+    border-color: black;
+    background-color: rgb(116,131,194);
+}
+
+
+
+.colonytitle {
+display: flex;
+justify-content: center;
+}
+
+.orders {
+    display: flex;
+    justify-content: center;
+    }
+    
+
+
+
+.colonyName{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+  
+
+}
+
+.titles{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    height:40px;
+    padding-top:15px;
+    font-weight: 500;
+    color: white;
+
+}
+
+.govName{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    height:40px;
+    margin-top:20px;
+    margin-left: 5px;
+    font-weight: 500;
+    background-color: rgb(116,131,194);
+  
+
+
+}
+
+.mineName{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    height:40px;
+    margin-top:20px;
+    margin-left: 5px;
+    font-weight: 500;
+    background-color: rgb(116,131,194);
+    
+    
+}
+
+.bottomContainer {
+    display:flex;
+    justify-content: space-between;
+}
+
+.customOrders{
+    display:flex;
+    justify-content: center;
+    margin-left: 7%;
+    width:60%;
+    border: dotted;
+    border-color: black;
+    margin-top: 50px;
+    padding-bottom: 100px;
+    padding-top: 10px;
+    height:100px;
+    background-color: rgb(116,131,194);
+
+}
+
+.facilityTitle{
+    display:flex;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    font-weight: 600;
+  
+ 
+}
+
+
+.mineralDisplay{
+    padding-right: 50px;
+    margin-top: 10px;
+
+ 
+}
+
+.cartDisplay{
+    display: flex;
+    justify-content:space-between;
+    flex-direction: column;
+    padding-left: 40px;
+    
+
+ 
+}
+
+#orderButton {
+    width:80px;
+    height:40px;
+    margin-top:10px ;
+    margin-left: 20px;
+    background-color: rgb(209,148,182);
+
+}
+
+
+
+.spaceCart {
+
+    margin: auto;
+    padding-bottom: 30px;
+    width:200px;
+    height:150px;
+}
+
+.cart {
+
+    width:150px;
+    height:50px;
+    margin-top: 10px;
+
+
+}
+
+.minDiv{
+    margin: 0%;
+}
+
+
+
+
+.spaceCartContainer {
+    display:flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-right: 7%;
+    width:200px;
+    border: dotted;
+    border-color: black;
+    background-color: rgb(116,131,194);
+}
+
+.spaceCartTitle {
+        display:flex;
+        justify-content: center;
+    
+        font-family: 'Courier New', Courier, monospace;
+        font-size: larger;
+        margin-top: auto;
+     
+    }
+

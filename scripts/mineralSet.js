@@ -34,7 +34,7 @@ export const cartMineral = () => {
         if (selectedMineral.name === null) {
             return html
         } else {
-            html = `<div>One ton of ${selectedMineral.name} from ${selectedMine.name}</>`
+            html = `<div class='minDiv'>One ton of ${selectedMineral.name} from ${selectedMine.name}</div>`
             return html
     }
 }
