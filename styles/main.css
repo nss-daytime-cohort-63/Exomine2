@@ -117,6 +117,32 @@
  
 }
 
+.cartDisplay{
+   padding-top: 50px;
+   padding-left: 40px;
+
+ 
+}
+
+
+
+.spaceCart {
+    border: dotted;
+    border-color: black;
+    margin: auto;
+    padding-bottom: 30px;
+    width:200px;
+    height:150px;
+}
+
+.cart {
+    margin-bottom: 50px;
+    border: dotted;
+    border-color: black;
+
+}
+
+
 .titleAndMins {
     border: dotted;
     border-color: black;
@@ -132,11 +158,6 @@
     border-color: black;
 }
 
-.spaceCart {
-    margin: auto;
-    padding-bottom: 30px;
-}
-
 .spaceCartTitle {
         display:flex;
         justify-content: center;
@@ -144,6 +165,7 @@
         border-color: black;
         font-family: 'Courier New', Courier, monospace;
         font-size: larger;
+        margin-top: auto;
      
     }
 

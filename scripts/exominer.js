@@ -2,6 +2,7 @@ import { Governors } from "./Governors.js"
 import { buildMineralOptions, Mines } from "./mine.js"
 import { cartMineral } from "./mineralSet.js"
 import { buildColonyOptions } from "./colonies.js"
+import { orderHistory } from "./orderH.js"
 
 
 //import { addCustomOrder } from "./database.js"
@@ -40,6 +41,7 @@ export const Exomine = () => {
             <article class='colonyContainer'>
                 <section class="colonies">
                 ${buildColonyOptions()}
+                ${orderHistory()}
                 </section>
             </article>
         </div>
@@ -68,13 +70,17 @@ export const Exomine = () => {
                     Space Cart
                     </h2>
 
-                    <div class="cartDisplay"
+                 <div class='cartDisplay'>
+
+                    <div class="cart">
                     ${cartMineral()}
                     </div>
 
                     <button id="orderButton">
                     Purchase Mineral
                     </button>
+
+                </div>
 
                  </div>
             </article>
