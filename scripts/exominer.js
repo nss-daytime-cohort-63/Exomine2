@@ -61,7 +61,6 @@ export const Exomine = () => {
                 <div class='titleAndMins'>
 
                     <div class="facilityTitle">
-                    Facility Minerals
                     </div>
 
                     <div class="mineralDisplay">
