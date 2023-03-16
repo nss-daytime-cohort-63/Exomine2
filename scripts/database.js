@@ -56,12 +56,12 @@ const database = {
 // basically stores part of order in order builder (transientState)
 //definitely need a colonyId, mineralId, and mineralAmount (just 1 for each click) stored in colonyMinerals
 export const setColony = (colonyId) => {
-    database.transientState.colonyMineralBuilder.selectedColony = colonyId
+    database.transientState.colonyMineralBuilder.colonyId = colonyId
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setMineral = (mineral) => {
-    database.transientState.colonyMineralBuilder.selectedMineral = mineral.id
+    database.transientState.colonyMineralBuilder.mineralId = mineral.id
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
@@ -80,7 +80,16 @@ export const setSelectedMineral = (mineral) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
+
 //getters to retrieve copy of state
+
+export const getColony = () => {
+    return database.transientState.colonyMineralBuilder.colonyId
+}
+export const getMineral = () => {
+    return database.transientState.colonyMineralBuilder.mineralId
+}
+
 export const getFacilities = () => {
     return database.facilities.map(f => ({ ...f }))
 }
@@ -125,45 +134,67 @@ export const getSelectedMineral = () => {
 
 //function to permanently change state (FINISH LATER)
 export const purchaseMineral = () => {
+    const selectedMineralId = getMineral()
+    const selectedColonyId = getColony()
     //check if colonyMineralBuilder.mineralId and colonyMineralBuilder.colonyId are not null
+    if (selectedMineralId !== null && selectedColonyId !== null) {
+
+        //copy current state
+        const partialOrder = { ...database.transientState.colonyMineralBuilder }
 
 
-    //copy current state
-    const partialOrder = {...database.transientState.colonyMineralBuilder}
+        createFinalOrder(partialOrder)
+        subtractMineMineral(partialOrder)
 
-    //(separate function that intakes a mineral and a governor)
-    //check if any colonyMineral entries already has same mineralId
-    //(Will have to loop through colonyMinerals and compare mineralIds)
-    //if match, add one to colonyMinerals mineralAmount (colonyMineral.mineralAmount += 1)
-    //if not, add new entry (const lastIndex = database.colonyMinerals.length -1
-    //                       newOrder.id = database.colonyMinerals[lastIndex].id +1)
-    //(id of one more than last (X), colonyId based on selected governors colonyId (X), minerals Id (X), and mineral amount of 1)
-    //                       newOrder.mineralAmount = 1
-
-    //reset portions of temporary state
-    database.transientState.colonyMineralBuilder = {}
+        //reset portions of temporary state
+        database.transientState.colonyMineralBuilder = {}
 
 
-    // Broadcast custom event to entire documement so that the
-    // application can re-render and update state
-    document.dispatchEvent(new CustomEvent("stateChanged"))
+        // Broadcast custom event to entire documement so that the
+        // application can re-render and update state
+        document.dispatchEvent(new CustomEvent("stateChanged"))
+    }
+
 }
 
-/*function that is invoked in purchaseMineral
-const createFinalOrder = (mineral, governor) => {
+//function that is invoked in purchaseMineral
+//(separate function that intakes a mineral and a governor)
+//check if any colonyMineral entries already has same mineralId and colonyId
+//(Will have to loop through colonyMinerals and compare mineralIds and colonyIds)
+//if match, add one to colonyMinerals mineralAmount (colonyMineral.mineralAmount += 1)
+//if not, add new entry (const lastIndex = database.colonyMinerals.length -1
+//                       newOrder.id = database.colonyMinerals[lastIndex].id +1)
+//(id of one more than last (X), colonyId based on selected governors colonyId (X), minerals Id (X), and mineral amount of 1)
+//                       partialOrder.mineralAmount = 1
+const createFinalOrder = (partialOrder) => {
     const previousOrders = database.colonyMinerals
-    for const (previousOrder of previousOrders){
-        if (previousOrder.mineralId === mineral.id){
-            //add one to mineralAmount in corresponding colonyMineral
+    for (const previousOrder of previousOrders) {
+        //if a colonyMineral for this mineral already exists
+        if (previousOrder.mineralId === partialOrder.mineralId && previousOrder.colonyId === partialOrder.colonyId) {
+            previousOrder.mineralAmount += 1
+            return
         }
-        else {
-            //create new ColonyMineral
-            const lastIndex = database.colonyMinerals.length -1
-            partialOrder.id = database.colonyMinerals[lastIndex].id +1
+        
+    }
+    
+                //create new ColonyMineral
+                const lastIndex = database.colonyMinerals.length - 1
+                partialOrder.id = database.colonyMinerals[lastIndex].id + 1
+                partialOrder.mineralAmount = 1
+                database.colonyMinerals.push(partialOrder)
+                return
+}
+
+const subtractMineMineral = (partialOrder) => {
+    const availableMinerals = getAvailableMinerals()
+    const selectedMine = getSelectedMine()
+    for (const mineral of availableMinerals) {
+        if (mineral.mineralId === partialOrder.mineralId && mineral.mineId === selectedMine.id) {
+            database.mineMinerals[mineral.id - 1].mineralAmount -= 1
         }
     }
 }
-*/
+
 
 
 //in purchase click event,
